@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--custom colour-->
+    <color name="black">#1E1E1E</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primary_theme">#0AC184</color>
+    <color name="grey">#7F7F7F</color>
+    <color name="bg">#F1F3FA</color>
+    <color name="light_primary">#CCF6FF</color>
+    <color name="red">#FF0000</color>
+    <color name="orange">#EFA889</color>
+</resources>

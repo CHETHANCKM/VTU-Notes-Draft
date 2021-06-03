@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">VTU Notes</string>
+    <string name="tc_text"><u>Terms and Conditions</u> and <u>Privacy Policy</u></string>
+    <string name="tc_sign">By signing in, You provide your <u>name</u> and <u>E-mail address</u>.</string>
+    <string name="title_activity_tc_and_pp">tc_and_pp</string>
+    <string name="tab_text_1">Terms and Conditions</string>
+    <string name="tab_text_2">Privacy Policy</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="invite_text">
+        Invite your friend to download the VTU Notes app. After they enter the code on the app, you both get 100 points.
+    </string>
+    <string name="invited">Invited by friend?<br />Enter the invite code and get rewarded
+    </string>
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "129339877580",
+    "firebase_url": "https://vtu-notes-2021-default-rtdb.firebaseio.com",
+    "project_id": "vtu-notes-2021",
+    "storage_bucket": "vtu-notes-2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129339877580:android:511c3fd741875914c3fa69",
+        "android_client_info": {
+          "package_name": "com.cs.vtunotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "129339877580-ka68u4onqbrveepfj94sdbqj8sdbsmf1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cs.vtunotes",
+            "certificate_hash": "7d201c434a8d7fb3bab15d22815fa31e7380ff0b"
+          }
+        },
+        {
+          "client_id": "129339877580-a4bn0of19brnppbho3i5bpcjhli7at5v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmylr8DYADndoLAhP-QfuqDJiOso0MTmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "129339877580-a4bn0of19brnppbho3i5bpcjhli7at5v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
