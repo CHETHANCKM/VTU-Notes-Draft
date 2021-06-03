@@ -770,7 +770,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="30dp"
                 app:cardBackgroundColor="@color/orange"
                 app:cardElevation="15dp"
                 app:cardMaxElevation="15dp">
