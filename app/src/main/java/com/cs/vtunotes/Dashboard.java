@@ -22,6 +22,8 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Date;
@@ -92,7 +94,9 @@ public class Dashboard extends Fragment {
     }
 
     private void getTimeFromAndroid() {
-        String name = mAuth.getCurrentUser().getDisplayName().toLowerCase().toString();
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext().getApplicationContext());
+
+        String name = account.getGivenName().toLowerCase().toString();
         Date dt = new Date();
         int hours = dt.getHours();
 
