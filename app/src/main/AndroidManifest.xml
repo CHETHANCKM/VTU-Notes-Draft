@@ -39,13 +39,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".terms_and_privacy" />
-        <activity android:name=".login" />
+        <activity android:name=".login"
+            android:noHistory="true"/>
         <activity
             android:name=".terms_and_conditions"
             android:noHistory="true" />
         <activity
-            android:name=".MainActivity"
-            android:noHistory="true" />
+            android:name=".MainActivity" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

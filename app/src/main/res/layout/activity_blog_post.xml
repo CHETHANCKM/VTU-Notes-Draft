@@ -154,7 +154,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:textColorHighlight="@color/white"
-                    android:hint="Write something"
+                    android:hint="What do you want to talk about?"
                     android:textColorHint="@color/grey"
                     android:textColor="@color/black"
                     android:fontFamily="@font/kanitextralight"

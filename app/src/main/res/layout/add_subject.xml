@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/kanit"
+        android:text="Add subject"
+        android:textColor="@color/primary_theme"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/kanit"
+        android:text="@string/updateurlinfo"
+        android:textColor="@color/grey"
+        android:textSize="13dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:hint="Subject code"
+            android:layout_weight="0.6"
+            android:textColorHint="@color/grey"
+            app:boxStrokeColor="@color/grey"
+            app:boxStrokeWidth="1dp"
+            app:counterMaxLength="10"
+            app:hintTextColor="@color/grey">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:cursorVisible="true"
+                android:inputType="text"
+                android:textAllCaps="true"
+                android:fontFamily="@font/kanit"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cursor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_weight="0.4"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:hint="Subject Name"
+            android:textColorHint="@color/grey"
+            app:boxStrokeColor="@color/grey"
+            app:boxStrokeWidth="1dp"
+            app:counterMaxLength="10"
+            app:hintTextColor="@color/grey">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:cursorVisible="true"
+                android:inputType="text"
+                android:fontFamily="@font/kanit"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cursor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/kanit"
+        android:text="updating by: "
+        android:textColor="@color/grey"
+        android:textSize="13dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/light_primary"
+        android:text="ADD SUBJECT"
+        android:textColor="@color/primary_theme" />
+
+
+</LinearLayout>
