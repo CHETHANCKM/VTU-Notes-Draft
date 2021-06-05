@@ -154,7 +154,8 @@
                                     <FrameLayout
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
-                                        android:layout_weight="1">
+                                        android:layout_weight="1"
+                                        android:id="@+id/physicsandchemi">
 
 
                                         <LinearLayout
@@ -359,6 +360,8 @@
                                     <FrameLayout
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
+                                        android:clickable="true"
+                                        android:id="@+id/branches_more"
                                         android:layout_weight="1">
 
 
@@ -688,6 +691,8 @@
                                     <FrameLayout
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
+                                        android:clickable="true"
+                                        android:id="@+id/more_questionpapers"
                                         android:layout_weight="1">
 
 

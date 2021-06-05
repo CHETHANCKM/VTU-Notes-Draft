@@ -7,6 +7,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <meta-data
+        android:name="com.google.mlkit.vision.DEPENDENCIES"
+        android:value="ocr" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,7 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VTUNotes">
-        <activity android:name=".blog_post"></activity>
+        <activity android:name=".physics_chemistry.phychem2018page"></activity>
+        <activity android:name=".physics_chemistry.phychem2017page" />
+        <activity android:name=".physics_chemistry.phychem2015page" />
+        <activity android:name=".physics_chemistry.physicsandchemi" />
+        <activity android:name=".blog_post" />
         <activity android:name=".reward" />
         <activity android:name=".resultpage" />
         <activity android:name=".reddemcode" />
@@ -30,13 +38,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeDashboard" />
         <activity android:name=".terms_and_privacy" />
         <activity android:name=".login" />
         <activity
             android:name=".terms_and_conditions"
             android:noHistory="true" />
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:noHistory="true" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

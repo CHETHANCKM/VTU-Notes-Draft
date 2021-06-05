@@ -9,12 +9,10 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
-import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
@@ -24,6 +22,7 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Date;
@@ -33,7 +32,7 @@ public class Dashboard extends Fragment {
     TextView hello_msg;
     private AdView mAdView1, mAdView2, mAdView3;
     FirebaseAuth mAuth;
-    FrameLayout complete_profile;
+    FrameLayout complete_profile,branches_more,more_questionpapers,physicsandchemi;
     CardView webiste;
 
     public Dashboard() {
@@ -49,6 +48,9 @@ public class Dashboard extends Fragment {
         hello_msg = v.findViewById(R.id.hello_msg);
         complete_profile = v.findViewById(R.id.complete_profile);
         webiste = v.findViewById(R.id.webiste);
+        branches_more = v.findViewById(R.id.branches_more);
+        more_questionpapers = v.findViewById(R.id.more_questionpapers);
+        physicsandchemi = v.findViewById(R.id.physicsandchemi);
 
         mAuth = FirebaseAuth.getInstance();
         getTimeFromAndroid();
@@ -79,6 +81,40 @@ public class Dashboard extends Fragment {
             }
         });
 
+        physicsandchemi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), com.cs.vtunotes.physics_chemistry.physicsandchemi.class);
+                startActivity(i);
+            }
+        });
+
+        branches_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
+                bottomSheetDialog.setContentView(R.layout.more_branches);
+
+//                LinearLayout copy = bottomSheetDialog.findViewById(R.id.copyLinearLayout);
+
+
+                bottomSheetDialog.show();
+            }
+        });
+
+
+        more_questionpapers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
+                bottomSheetDialog.setContentView(R.layout.more_questionpapers);
+
+//                LinearLayout copy = bottomSheetDialog.findViewById(R.id.copyLinearLayout);
+
+
+                bottomSheetDialog.show();
+            }
+        });
 
         webiste.setOnClickListener(new View.OnClickListener() {
             @Override
