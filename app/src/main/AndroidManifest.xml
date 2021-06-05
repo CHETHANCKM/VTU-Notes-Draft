@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VTUNotes">
-        <activity android:name=".information_science.Minformation_science2018page"></activity>
+        <activity android:name=".information_science.information_science2018page"></activity>
         <activity android:name=".information_science.information_science2017page" />
         <activity android:name=".information_science.information_science2015page" />
         <activity android:name=".information_science.information_science" />
