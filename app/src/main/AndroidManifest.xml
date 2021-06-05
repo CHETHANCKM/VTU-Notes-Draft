@@ -18,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VTUNotes">
-        <activity android:name=".physics_chemistry.phychem2018page"></activity>
+        <activity android:name=".civil.civil2015page"></activity>
+        <activity android:name=".civil.civil" />
+        <activity android:name=".physics_chemistry.phychem2018page" />
         <activity android:name=".physics_chemistry.phychem2017page" />
         <activity android:name=".physics_chemistry.phychem2015page" />
         <activity android:name=".physics_chemistry.physicsandchemi" />
