@@ -11,6 +11,6 @@ public class electronics_communication2015page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_electronics_communication2015page2);
+        setContentView(R.layout.activity_electronics_communication2015page);
     }
 }
