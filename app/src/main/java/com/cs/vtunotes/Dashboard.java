@@ -48,8 +48,8 @@ public class Dashboard extends Fragment {
         hello_msg = v.findViewById(R.id.hello_msg);
         complete_profile = v.findViewById(R.id.complete_profile);
         webiste = v.findViewById(R.id.webiste);
-        branches_more = v.findViewById(R.id.branches_more);
-        more_questionpapers = v.findViewById(R.id.more_questionpapers);
+//        branches_more = v.findViewById(R.id.branches_more);
+//        more_questionpapers = v.findViewById(R.id.more_questionpapers);
         physicsandchemi = v.findViewById(R.id.physicsandchemi);
 
         mAuth = FirebaseAuth.getInstance();
@@ -89,32 +89,32 @@ public class Dashboard extends Fragment {
             }
         });
 
-        branches_more.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
-                bottomSheetDialog.setContentView(R.layout.more_branches);
-
-//                LinearLayout copy = bottomSheetDialog.findViewById(R.id.copyLinearLayout);
-
-
-                bottomSheetDialog.show();
-            }
-        });
-
-
-        more_questionpapers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
-                bottomSheetDialog.setContentView(R.layout.more_questionpapers);
-
-//                LinearLayout copy = bottomSheetDialog.findViewById(R.id.copyLinearLayout);
+//        branches_more.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
+//                bottomSheetDialog.setContentView(R.layout.more_branches);
+//
+////                LinearLayout copy = bottomSheetDialog.findViewById(R.id.copyLinearLayout);
+//
+//
+//                bottomSheetDialog.show();
+//            }
+//        });
 
 
-                bottomSheetDialog.show();
-            }
-        });
+//        more_questionpapers.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
+//                bottomSheetDialog.setContentView(R.layout.more_questionpapers);
+//
+////                LinearLayout copy = bottomSheetDialog.findViewById(R.id.copyLinearLayout);
+//
+//
+//                bottomSheetDialog.show();
+//            }
+//        });
 
         webiste.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,7 +136,7 @@ public class Dashboard extends Fragment {
         Date dt = new Date();
         int hours = dt.getHours();
 
-        if(hours>=1 && hours<=12){
+        if(hours>=1 && hours<12){
             hello_msg.setText("Good morning, "+name);
         }else if(hours>=12 && hours<=16){
             hello_msg.setText("Good afternoon, "+name);

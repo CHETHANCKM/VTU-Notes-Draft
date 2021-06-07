@@ -2,6 +2,8 @@ package com.cs.vtunotes.physics_chemistry;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +12,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cs.vtunotes.R;
+import com.cs.vtunotes.adapter.subjectAdapter;
 import com.cs.vtunotes.editprofileactivity;
+import com.cs.vtunotes.models.subjectnameModels;
 import com.cs.vtunotes.webactivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -29,18 +34,69 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class phychem2015page extends AppCompatActivity {
+    RecyclerView recyclerView;
     private DatabaseReference mDatabase;
     Button add_subject_button, update_url_button;
     TextInputEditText add_subject_code, add_subject_name;
     EditText url_text;
+    subjectAdapter subjectAdapter;
+    TextView loading_sub;
+    ArrayList<subjectnameModels> list;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phychem2015page);
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        loading_sub = findViewById(R.id.loading_sub);
+
+
+
+
+        mDatabase = FirebaseDatabase.getInstance()
+                .getReference("Notes")
+                .child("subjects")
+                .child("2015")
+                .child("physics_chemi");
+
+        recyclerView = findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+
+
+
+        list = new ArrayList<>();
+        loading_sub.setVisibility(View.VISIBLE);
+
+        subjectAdapter = new subjectAdapter(this, list);
+        subjectAdapter.setHasStableIds(true);
+        recyclerView.setAdapter(subjectAdapter);
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                list.clear();
+                for (DataSnapshot ds: snapshot.getChildren())
+                {
+
+                    subjectnameModels subjectnameModels = ds.getValue(com.cs.vtunotes.models.subjectnameModels.class);
+                    list.add(subjectnameModels);
+                }
+                loading_sub.setVisibility(View.GONE);
+                subjectAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+
 
     }
 
@@ -55,6 +111,7 @@ public class phychem2015page extends AppCompatActivity {
         url_text.setText("Loading...");
         final String[] url = {null};
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Scheme").child("physics_chemi").child("2015");
+        databaseReference.keepSynced(true);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -124,13 +181,17 @@ public class phychem2015page extends AppCompatActivity {
                         }
                         else
                         {
-                            FirebaseDatabase.getInstance()
-                                    .getReference("Notes")
-                                    .child("subjects")
+                            HashMap<Object, String> data = new HashMap<>();
+                            data.put("subject_code", subjectcode);
+                            data.put("subject_name", subjectname);
+
+                            DatabaseReference refs = FirebaseDatabase.getInstance()
+                                    .getReference("Notes");
+                            refs.child("subjects")
                                     .child("2015")
                                     .child("physics_chemi")
                                     .child(subjectcode)
-                                    .setValue(subjectname)
+                                    .setValue(data)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull @NotNull Task<Void> task) {
@@ -148,14 +209,12 @@ public class phychem2015page extends AppCompatActivity {
 
     public void show_scheme(View view) {
         final String[] url = {null};
+        Toast.makeText(phychem2015page.this, "Please wait...", Toast.LENGTH_LONG).show();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Scheme").child("physics_chemi").child("2015");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 url[0] = snapshot.getValue(String.class);
-
-                Toast.makeText(phychem2015page.this, ""+url[0], Toast.LENGTH_SHORT).show();
-
                 if (url[0]==null)
                 {
                     Toast.makeText(phychem2015page.this, "Loading... Try again", Toast.LENGTH_LONG).show();
@@ -166,9 +225,6 @@ public class phychem2015page extends AppCompatActivity {
                     i.putExtra("url", url[0]);
                     startActivity(i);
                 }
-
-
-
 
             }
             @Override

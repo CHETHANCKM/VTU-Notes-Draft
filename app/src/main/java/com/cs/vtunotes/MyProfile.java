@@ -59,7 +59,4 @@ public class MyProfile extends Fragment {
         return v;
     }
 
-    public void backpress(View view) {
-        Toast.makeText(getContext(), "fefefe", Toast.LENGTH_SHORT).show();
-    }
 }

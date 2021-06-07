@@ -3,20 +3,20 @@
 
     <item
         android:id="@+id/dashboard_id"
-        android:icon="@android:drawable/ic_lock_power_off"
+        android:icon="@drawable/ic_home_alt2"
         android:title="Dashboard" />
 
     <item
         android:id="@+id/discussion"
-        android:icon="@android:drawable/ic_lock_power_off"
+        android:icon="@drawable/ic_chat"
         android:title="Discussion" />
 
     <item
         android:id="@+id/notification_id"
-        android:icon="@drawable/ic_baseline_arrow_back_24"
+        android:icon="@drawable/ic_bell"
         android:title="Notification" />
     <item
         android:id="@+id/profile_id"
-        android:icon="@android:drawable/stat_sys_vp_phone_call"
+        android:icon="@drawable/ic_user"
         android:title="My Profile" />
 </menu>

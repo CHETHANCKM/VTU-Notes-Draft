@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         loadfragment(new Dashboard());
 
 
+
+
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
 
         if (account==null){
