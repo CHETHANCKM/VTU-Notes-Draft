@@ -3,10 +3,10 @@
     package="com.cs.vtunotes">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
 
     <meta-data
         android:name="com.google.mlkit.vision.DEPENDENCIES"
@@ -19,38 +19,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VTUNotes">
-        <activity android:name=".modules.post_notes.post_new_title"/>
+        <activity android:name=".modules.module_five"></activity>
+        <activity android:name=".modules.module_four" />
+        <activity android:name=".modules.module_three" />
+        <activity android:name=".modules.post_notes.post_new_title" />
         <activity android:name=".modules.module_two" />
         <activity android:name=".modules.module_one" />
         <activity android:name=".module_parent" />
         <activity android:name=".webactivity" />
-        <activity android:name=".information_science.information_science2018page" />
-        <activity android:name=".information_science.information_science2017page" />
         <activity android:name=".information_science.information_science2015page" />
         <activity android:name=".information_science.information_science" />
-        <activity android:name=".mechanical.mechanical2018page" />
-        <activity android:name=".mechanical.mechanical2017page" />
         <activity android:name=".mechanical.mechanical2015page" />
         <activity android:name=".mechanical.mechanical" />
-        <activity android:name=".electrical_electronics.electrical_electronics2018page" />
-        <activity android:name=".electrical_electronics.electrical_electronics2017page" />
         <activity android:name=".electrical_electronics.electrical_electronics2015page" />
         <activity android:name=".electrical_electronics.electricalandelectronics" />
-        <activity android:name=".electronics_communication.electronics_communication2018page" />
-        <activity android:name=".electronics_communication.electronics_communication2017page" />
         <activity android:name=".electronics_communication.electronics_communication2015page" />
         <activity android:name=".electronics_communication.electronics_communication" />
-        <activity android:name=".computer_science.computer_science2018page" />
-        <activity android:name=".computer_science.computer_science2017page" />
         <activity android:name=".computer_science.computer_science2015page" />
         <activity android:name=".computer_science.computer_science" />
-        <activity android:name=".civil.civil2018page" />
-        <activity android:name=".civil.civil2017page" />
         <activity android:name=".civil.civil2015page" />
         <activity android:name=".civil.civil" />
-        <activity android:name=".physics_chemistry.phychem2018page" />
-        <activity android:name=".physics_chemistry.phychem2017page" />
-        <activity android:name=".physics_chemistry.phychem2015page" />
+        <activity android:name=".physics_chemistry.phychemschemepage" />
         <activity android:name=".physics_chemistry.physicsandchemi" />
         <activity android:name=".blog_post" />
         <activity android:name=".reward" />

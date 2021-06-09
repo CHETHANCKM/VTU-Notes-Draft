@@ -30,6 +30,7 @@ public class module_parent extends AppCompatActivity {
         Intent intent = getIntent();
         String new_subject_code = intent.getStringExtra("subject_code");
         String new_subject_name = intent.getStringExtra("subject_name");
+        String new_scheme = intent.getStringExtra("scheme");
 
         head_text.setText(new_subject_code+" - "+new_subject_name.toLowerCase());
 
@@ -39,6 +40,51 @@ public class module_parent extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(), module_one.class);
                 i.putExtra("subject_code", new_subject_code);
                 i.putExtra("subject_name", new_subject_name);
+                i.putExtra("scheme_code", new_scheme);
+                startActivity(i);
+            }
+        });
+
+        module2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), module_two.class);
+                i.putExtra("subject_code", new_subject_code);
+                i.putExtra("subject_name", new_subject_name);
+                i.putExtra("scheme_code", new_scheme);
+                startActivity(i);
+            }
+        });
+
+        module3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), module_three.class);
+                i.putExtra("subject_code", new_subject_code);
+                i.putExtra("subject_name", new_subject_name);
+                i.putExtra("scheme_code", new_scheme);
+                startActivity(i);
+            }
+        });
+
+        module4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), module_four.class);
+                i.putExtra("subject_code", new_subject_code);
+                i.putExtra("subject_name", new_subject_name);
+                i.putExtra("scheme_code", new_scheme);
+                startActivity(i);
+            }
+        });
+
+        module5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), module_five.class);
+                i.putExtra("subject_code", new_subject_code);
+                i.putExtra("subject_name", new_subject_name);
+                i.putExtra("scheme_code", new_scheme);
                 startActivity(i);
             }
         });

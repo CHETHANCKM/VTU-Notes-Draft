@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context=".physics_chemistry.phychem2015page">
+    tools:context=".physics_chemistry.phychemschemepage">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/materialToolbar6"
@@ -45,20 +45,28 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerlayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:id="@+id/loading_sub"
-                android:paddingTop="5dp"
-                android:fontFamily="@font/kanit"
-                android:textColor="@color/black"
-                android:background="@color/light_grey"
-                android:paddingBottom="5dp"
-                android:text="Loading subjects...">
+                android:layout_height="wrap_content">
 
-            </TextView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/list_card_chip_shimmer_effect"/>
+                    <include layout="@layout/list_card_chip_shimmer_effect"/>
+                    <include layout="@layout/list_card_chip_shimmer_effect"/>
+                    <include layout="@layout/list_card_chip_shimmer_effect"/>
+                    <include layout="@layout/list_card_chip_shimmer_effect"/>
+                    <include layout="@layout/list_card_chip_shimmer_effect"/>
+                    <include layout="@layout/list_card_chip_shimmer_effect"/>
+
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
 
             <androidx.recyclerview.widget.RecyclerView

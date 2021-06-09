@@ -27,6 +27,7 @@ public class module_one extends AppCompatActivity {
         Intent intent = getIntent();
         String m_subject_code = intent.getStringExtra("subject_code");
         String m_subject_name = intent.getStringExtra("subject_name");
+        String m_scheme = intent.getStringExtra("scheme_code");
 
         head_text.setText(m_subject_name+" - Module 1");
 
@@ -35,10 +36,10 @@ public class module_one extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), post_new_title.class);
-                i.putExtra("scheme", "2015");
+                i.putExtra("scheme", m_scheme);
                 i.putExtra("subject_code", m_subject_code);
                 i.putExtra("subject_name", m_subject_name);
-                i.putExtra("module", "module_one");
+                i.putExtra("module", "Module 1");
                 startActivity(i);
             }
         });

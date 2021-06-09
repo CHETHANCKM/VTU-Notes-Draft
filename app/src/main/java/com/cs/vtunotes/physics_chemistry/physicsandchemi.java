@@ -2,18 +2,25 @@ package com.cs.vtunotes.physics_chemistry;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.cs.vtunotes.R;
+import com.cs.vtunotes.adapter.schemeadapter;
+import com.cs.vtunotes.adapter.subjectAdapter;
 import com.cs.vtunotes.login;
-import com.cs.vtunotes.terms_and_conditions;
+import com.cs.vtunotes.models.SchemeModel;
+import com.cs.vtunotes.models.subjectnameModels;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -28,26 +35,46 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class physicsandchemi extends AppCompatActivity {
-
+    RecyclerView recyclerView;
+    private DatabaseReference mDatabase;
+    schemeadapter schemeadapter;
+    ArrayList<SchemeModel> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_physicsandchemi);
+        recyclerView = findViewById(R.id.recyclerview_scheme);
 
-    }
+        mDatabase = FirebaseDatabase.getInstance()
+                .getReference().child("scheme");
 
-    public void phy_che2015(View view) {
-        Intent i = new Intent(physicsandchemi.this, phychem2015page.class);
-        startActivity(i);
-    }
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+        list = new ArrayList<>();
 
-    public void phy_che2017(View view) {
-        Intent i = new Intent(physicsandchemi.this, phychem2017page.class);
-        startActivity(i);
-    }
+        schemeadapter = new schemeadapter(this, list);
+        schemeadapter.setHasStableIds(true);
+        recyclerView.setAdapter(schemeadapter);
 
-    public void phy_che2018(View view) {
-        Intent i = new Intent(physicsandchemi.this, phychem2018page.class);
-        startActivity(i);
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                list.clear();
+                for (DataSnapshot ds: snapshot.getChildren())
+                {
+
+                    SchemeModel schemeModel = ds.getValue(SchemeModel.class);
+                    list.add(schemeModel);
+                }
+                schemeadapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+
     }
 }

@@ -11,6 +11,6 @@ public class information_science2015page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_information_science2015page2);
+        setContentView(R.layout.activity_information_science2015page);
     }
 }

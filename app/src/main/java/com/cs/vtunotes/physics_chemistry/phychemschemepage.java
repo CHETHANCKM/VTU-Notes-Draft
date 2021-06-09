@@ -7,25 +7,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cs.vtunotes.R;
 import com.cs.vtunotes.adapter.subjectAdapter;
-import com.cs.vtunotes.editprofileactivity;
 import com.cs.vtunotes.models.subjectnameModels;
 import com.cs.vtunotes.webactivity;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,31 +32,33 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class phychem2015page extends AppCompatActivity {
+public class phychemschemepage extends AppCompatActivity {
     RecyclerView recyclerView;
     private DatabaseReference mDatabase;
     Button add_subject_button, update_url_button;
     TextInputEditText add_subject_code, add_subject_name;
     EditText url_text;
     subjectAdapter subjectAdapter;
-    TextView loading_sub;
+    ShimmerFrameLayout shimmerlayout;
     ArrayList<subjectnameModels> list;
+    String m_scheme_year;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phychem2015page);
-        loading_sub = findViewById(R.id.loading_sub);
+        setContentView(R.layout.activity_phychemschemepage);
+        shimmerlayout = findViewById(R.id.shimmerlayout);
 
-
+        Intent intent = getIntent();
+        m_scheme_year = intent.getStringExtra("scheme_year");
 
 
         mDatabase = FirebaseDatabase.getInstance()
                 .getReference("Notes")
                 .child("subjects")
-                .child("2015")
+                .child(m_scheme_year)
                 .child("physics_chemi");
 
         recyclerView = findViewById(R.id.recyclerview);
@@ -71,7 +68,8 @@ public class phychem2015page extends AppCompatActivity {
 
 
         list = new ArrayList<>();
-        loading_sub.setVisibility(View.VISIBLE);
+//        loading_sub.setVisibility(View.VISIBLE);
+        shimmerlayout.setVisibility(View.VISIBLE);
 
         subjectAdapter = new subjectAdapter(this, list);
         subjectAdapter.setHasStableIds(true);
@@ -87,7 +85,7 @@ public class phychem2015page extends AppCompatActivity {
                     subjectnameModels subjectnameModels = ds.getValue(com.cs.vtunotes.models.subjectnameModels.class);
                     list.add(subjectnameModels);
                 }
-                loading_sub.setVisibility(View.GONE);
+                shimmerlayout.setVisibility(View.GONE);
                 subjectAdapter.notifyDataSetChanged();
             }
 
@@ -110,7 +108,8 @@ public class phychem2015page extends AppCompatActivity {
 
         url_text.setText("Loading...");
         final String[] url = {null};
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Scheme").child("physics_chemi").child("2015");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance()
+                .getReference("Scheme").child("physics_chemi").child(m_scheme_year);
         databaseReference.keepSynced(true);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -134,18 +133,18 @@ public class phychem2015page extends AppCompatActivity {
                 }
                 else if(url[0].equals(new_url))
                 {
-                    Toast.makeText(phychem2015page.this, "Field contains same url", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(phychemschemepage.this, "Field contains same url", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
                     FirebaseDatabase.getInstance()
                             .getReference("Scheme")
                             .child("physics_chemi")
-                            .child("2015")
+                            .child(m_scheme_year)
                             .setValue(new_url).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull @NotNull Task<Void> task) {
-                            Toast.makeText(phychem2015page.this, "Scheme url was updated successfully.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(phychemschemepage.this, "Scheme url was updated successfully.", Toast.LENGTH_SHORT).show();
                             url_text.clearFocus();
                             bottomSheetDialog.dismiss();
 
@@ -177,25 +176,26 @@ public class phychem2015page extends AppCompatActivity {
 
                         if (subjectname.isEmpty() || subjectcode.isEmpty())
                         {
-                            Toast.makeText(phychem2015page.this, "All feilds required", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(phychemschemepage.this, "All feilds required", Toast.LENGTH_SHORT).show();
                         }
                         else
                         {
                             HashMap<Object, String> data = new HashMap<>();
                             data.put("subject_code", subjectcode);
                             data.put("subject_name", subjectname);
+                            data.put("scheme", m_scheme_year);
 
                             DatabaseReference refs = FirebaseDatabase.getInstance()
                                     .getReference("Notes");
                             refs.child("subjects")
-                                    .child("2015")
+                                    .child(m_scheme_year)
                                     .child("physics_chemi")
                                     .child(subjectcode)
                                     .setValue(data)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull @NotNull Task<Void> task) {
-                                            Toast.makeText(phychem2015page.this, "New subject was added successfully.", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(phychemschemepage.this, "New subject was added successfully.", Toast.LENGTH_SHORT).show();
                                             bottomSheetDialog.dismiss();
                                         }
                                     });
@@ -209,15 +209,16 @@ public class phychem2015page extends AppCompatActivity {
 
     public void show_scheme(View view) {
         final String[] url = {null};
-        Toast.makeText(phychem2015page.this, "Please wait...", Toast.LENGTH_LONG).show();
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Scheme").child("physics_chemi").child("2015");
+        Toast.makeText(phychemschemepage.this, "Please wait...", Toast.LENGTH_LONG).show();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Scheme")
+                .child("physics_chemi").child(m_scheme_year);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 url[0] = snapshot.getValue(String.class);
                 if (url[0]==null)
                 {
-                    Toast.makeText(phychem2015page.this, "Loading... Try again", Toast.LENGTH_LONG).show();
+                    Toast.makeText(phychemschemepage.this, "Loading... Try again", Toast.LENGTH_LONG).show();
                 }
                 else
                 {

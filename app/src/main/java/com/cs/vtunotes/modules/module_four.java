@@ -11,14 +11,15 @@ import com.cs.vtunotes.R;
 import com.cs.vtunotes.modules.post_notes.post_new_title;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class module_two extends AppCompatActivity {
+public class module_four extends AppCompatActivity {
+
     TextView head_text;
     FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_module_two);
+        setContentView(R.layout.activity_module_four);
 
         head_text = findViewById(R.id.head_text);
         floatingActionButton = findViewById(R.id.floating_addquestion);
@@ -27,7 +28,7 @@ public class module_two extends AppCompatActivity {
         String m_subject_name = intent.getStringExtra("subject_name");
         String m_scheme = intent.getStringExtra("scheme_code");
 
-        head_text.setText(m_subject_name+" - Module 2");
+        head_text.setText(m_subject_name+" - Module 4");
 
 
 
@@ -38,10 +39,9 @@ public class module_two extends AppCompatActivity {
                 i.putExtra("scheme", m_scheme);
                 i.putExtra("subject_code", m_subject_code);
                 i.putExtra("subject_name", m_subject_name);
-                i.putExtra("module", "Module 2");
+                i.putExtra("module", "Module 4");
                 startActivity(i);
             }
         });
-
     }
 }

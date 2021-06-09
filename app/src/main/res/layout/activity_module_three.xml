@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".modules.module_two">
 
+    android:layout_height="match_parent"
+    tools:context=".modules.module_three">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/materialToolbar7"
@@ -63,6 +63,5 @@
         app:layout_constraintEnd_toEndOf="parent">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
