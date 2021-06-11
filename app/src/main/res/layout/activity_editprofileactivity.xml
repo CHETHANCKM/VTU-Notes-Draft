@@ -15,6 +15,7 @@
         android:layout_alignParentTop="true"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -28,7 +29,22 @@
             android:textSize="20dp"></TextView>
 
 
+        <ProgressBar
+            android:id="@+id/loading_pgs"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="end"
+            tools:layout_editor_absoluteX="363dp"
+            tools:layout_editor_absoluteY="4dp" />
+
+
     </com.google.android.material.appbar.MaterialToolbar>
+
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -56,7 +72,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-
                     android:padding="20dp">
 
                     <TextView
@@ -75,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/kanit"
-                        android:text=""
+                        android:text="hello@gmail.com"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
                         android:textSize="15dp" />
@@ -101,13 +116,25 @@
                     android:orientation="vertical"
                     android:padding="20dp">
 
+                    <TextView
+                        android:id="@+id/edit_name_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12dp"
+                        android:text="ⓘ: These details cannot be changed anymore"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="@color/grey"
+                        android:fontFamily="@font/kanit">
+
+                    </TextView>
+
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputLayout2"
+                        android:id="@+id/block_name"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:hint="Edit name"
                         android:layout_marginBottom="10dp"
-                        android:hint="Phone Number"
                         android:textColorHint="@color/grey"
                         app:boxStrokeColor="@color/grey"
                         app:boxStrokeWidth="1dp"
@@ -115,16 +142,19 @@
                         app:hintTextColor="@color/grey">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
+                            android:inputType="textNoSuggestions"
                             android:cursorVisible="true"
-                            android:inputType="number"
-                            android:text="XXXXXXXXXX"
+                            android:textAllCaps="true"
                             android:textColor="@color/black"
                             android:textCursorDrawable="@drawable/cursor" />
 
                     </com.google.android.material.textfield.TextInputLayout>
+
+
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/usn"
@@ -140,12 +170,12 @@
                         app:hintTextColor="@color/grey">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/usn_new"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
+                            android:textAllCaps="true"
                             android:cursorVisible="true"
-                            android:inputType="number"
-                            android:text=""
                             android:textColor="@color/black"
                             android:textCursorDrawable="@drawable/cursor" />
 
@@ -153,7 +183,7 @@
 
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/reg_state_ip"
+
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -164,16 +194,17 @@
 
 
                         <AutoCompleteTextView
-                            android:id="@+id/dropdwon_text_ip"
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableTint="@color/black"
+                            android:textColor="@color/black"
                             android:textCursorDrawable="@drawable/cursor" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:id="@+id/customSpinnerLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="College name"
@@ -184,8 +215,10 @@
 
 
                         <AutoCompleteTextView
+                            android:id="@+id/customTextView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="textNoSuggestions"
                             android:drawableTint="@color/black"
                             android:textColorHint="@color/grey"
                             android:textCursorDrawable="@drawable/cursor" />
@@ -198,6 +231,7 @@
 
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/submit"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_margin="15dp"

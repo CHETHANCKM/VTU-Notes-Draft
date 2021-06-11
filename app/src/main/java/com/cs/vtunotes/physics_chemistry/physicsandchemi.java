@@ -21,6 +21,7 @@ import com.cs.vtunotes.adapter.subjectAdapter;
 import com.cs.vtunotes.login;
 import com.cs.vtunotes.models.SchemeModel;
 import com.cs.vtunotes.models.subjectnameModels;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -38,12 +39,14 @@ public class physicsandchemi extends AppCompatActivity {
     RecyclerView recyclerView;
     private DatabaseReference mDatabase;
     schemeadapter schemeadapter;
+    ShimmerFrameLayout shimmerlayout;
     ArrayList<SchemeModel> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_physicsandchemi);
         recyclerView = findViewById(R.id.recyclerview_scheme);
+        shimmerlayout = findViewById(R.id.shimmerlayout);
 
         mDatabase = FirebaseDatabase.getInstance()
                 .getReference().child("scheme");
@@ -51,7 +54,7 @@ public class physicsandchemi extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         list = new ArrayList<>();
-
+        shimmerlayout.setVisibility(View.VISIBLE);
         schemeadapter = new schemeadapter(this, list);
         schemeadapter.setHasStableIds(true);
         recyclerView.setAdapter(schemeadapter);
@@ -67,6 +70,7 @@ public class physicsandchemi extends AppCompatActivity {
                     SchemeModel schemeModel = ds.getValue(SchemeModel.class);
                     list.add(schemeModel);
                 }
+                shimmerlayout.setVisibility(View.GONE);
                 schemeadapter.notifyDataSetChanged();
             }
 

@@ -30,7 +30,7 @@ import java.util.Date;
 
 public class Dashboard extends Fragment {
     TextView hello_msg;
-    private AdView mAdView1, mAdView2, mAdView3;
+//    private AdView mAdView1, mAdView2, mAdView3;
     FirebaseAuth mAuth;
     FrameLayout complete_profile,branches_more,more_questionpapers,physicsandchemi;
     CardView webiste;
@@ -57,20 +57,21 @@ public class Dashboard extends Fragment {
         MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
+                //        AdView adView = new AdView(getContext());
+//        adView.setAdSize(AdSize.BANNER);
+//        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+
+//
+//        mAdView1 = v.findViewById(R.id.adView1);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView1.loadAd(adRequest);
+//
+//        mAdView2 = v.findViewById(R.id.adView2);
+//        mAdView2.loadAd(adRequest);
             }
         });
 
-        AdView adView = new AdView(getContext());
-        adView.setAdSize(AdSize.BANNER);
-        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
 
-
-        mAdView1 = v.findViewById(R.id.adView1);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView1.loadAd(adRequest);
-
-        mAdView2 = v.findViewById(R.id.adView2);
-        mAdView2.loadAd(adRequest);
 
 
         complete_profile.setOnClickListener(new View.OnClickListener() {
@@ -130,13 +131,14 @@ public class Dashboard extends Fragment {
     }
 
     private void getTimeFromAndroid() {
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext().getApplicationContext());
+        FirebaseAuth mauth = FirebaseAuth.getInstance();
 
-        String name = account.getGivenName().toLowerCase().toString();
+
+        String name = mauth.getCurrentUser().getDisplayName().toLowerCase();
         Date dt = new Date();
         int hours = dt.getHours();
 
-        if(hours>=1 && hours<12){
+        if(hours>=0 && hours<12){
             hello_msg.setText("Good morning, "+name);
         }else if(hours>=12 && hours<=16){
             hello_msg.setText("Good afternoon, "+name);

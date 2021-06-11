@@ -55,9 +55,10 @@
 
     </androidx.cardview.widget.CardView>
 
-    <FrameLayout
+    <ScrollView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialToolbar4">
@@ -96,7 +97,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
-                            android:id="@+id/textView16"
+                            android:id="@+id/username_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/robotomedium"
@@ -120,8 +121,8 @@
                                     android:id="@+id/path"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text=""
                                     android:fontFamily="@font/kanit"
+                                    android:text=""
                                     android:textColor="@color/grey"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
@@ -149,40 +150,203 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.15"
+                        android:autoSizeMaxTextSize="20dp"
+                        android:autoSizeMinTextSize="12dp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
                         android:background="@null"
-                        android:ems="10"
                         android:fontFamily="@font/kanit"
                         android:gravity="start|top"
-                        android:hint="Scan the question from the camera"
+                        android:hint="Scan the question from the camera."
                         android:inputType="textMultiLine"
                         android:textColor="@color/black"
                         android:textColorHighlight="@color/white"
-                        android:textColorHint="@color/grey"
-                        android:textSize="20dp" />
+                        android:textColorHint="@color/grey" />
 
                     <ImageView
                         android:id="@+id/ai_camera"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
-                        android:clickable="true"
                         android:layout_weight="0.85"
+                        android:clickable="true"
                         app:srcCompat="@drawable/ic_camera" />
 
 
                 </LinearLayout>
             </FrameLayout>
+
         </LinearLayout>
-    </FrameLayout>
+    </ScrollView>
 
     <FrameLayout
+        android:id="@+id/frameLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-     
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <FrameLayout
+                android:id="@+id/choosefile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.75"
+                android:clickable="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_file" />
+
+                    <TextView
+                        android:id="@+id/textView29"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/kanit"
+                        android:text="Select PDF"
+                        android:textColor="@color/primary_theme"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.6"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </FrameLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/light_grey"
+                tools:layout_editor_absoluteX="70dp">
+
+            </View>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="0.25">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView28"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/kanit"
+                        android:text="UPLOAD SOLUTION"
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
+
+                    <FrameLayout
+                        android:id="@+id/guidelines_pdf"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/kanitextralight"
+                            android:text="@string/string_pdf"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/file_null"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <ImageView
+                                android:id="@+id/imageView11"
+                                android:layout_width="30dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.1"
+                                app:srcCompat="@drawable/ic_document" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="0.8"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/file_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/kanit"
+                                    android:text="file_name"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/file_size"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/kanit"
+                                    android:textColor="@color/grey"
+                                    android:textSize="10dp" />
+
+                                <com.google.android.material.progressindicator.LinearProgressIndicator
+                                    android:id="@+id/file_percentage"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                </com.google.android.material.progressindicator.LinearProgressIndicator>
+                            </LinearLayout>
+
+                            <ImageView
+                                android:id="@+id/imageView12"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.1"
+                                app:srcCompat="@drawable/ic_cancel" />
+
+                        </LinearLayout>
+                    </FrameLayout>
+                </LinearLayout>
+
+            </FrameLayout>
+        </LinearLayout>
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

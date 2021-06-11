@@ -8,9 +8,11 @@ import android.os.Handler;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SplashActivity extends AppCompatActivity {
-
+    FirebaseAuth mauth = FirebaseAuth.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,9 +20,10 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
 
-                if (account==null)
+                FirebaseUser user = mauth.getCurrentUser();
+
+                if (user==null)
                 {
                     Intent i = new Intent(SplashActivity.this, terms_and_conditions.class);
                     startActivity(i);

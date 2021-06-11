@@ -62,8 +62,7 @@
             android:name=".login"
             android:noHistory="true" />
         <activity
-            android:name=".terms_and_conditions"
-            android:noHistory="true" />
+            android:name=".terms_and_conditions"/>
         <activity android:name=".MainActivity" />
 
         <meta-data

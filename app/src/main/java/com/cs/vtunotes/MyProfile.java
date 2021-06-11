@@ -13,12 +13,14 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 
 public class MyProfile extends Fragment {
 
     TextView editprofile_button;
     FrameLayout invitefriend;
-    CardView rewardcard;
+    CardView rewardcard,signout;
     public MyProfile() {
         // Required empty public constructor
     }
@@ -31,6 +33,21 @@ public class MyProfile extends Fragment {
         editprofile_button = v.findViewById(R.id.editprofile_button);
         invitefriend = v.findViewById(R.id.invitefriend);
         rewardcard = v.findViewById(R.id.rewardcard);
+        signout = v.findViewById(R.id.signout);
+
+        signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth mauth = FirebaseAuth.getInstance();
+
+                mauth.signOut();
+                Intent i = new Intent(getContext(), SplashActivity.class);
+                startActivity(i);
+
+
+
+            }
+        });
 
         editprofile_button.setOnClickListener(new View.OnClickListener() {
             @Override

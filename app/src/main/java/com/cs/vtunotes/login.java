@@ -28,8 +28,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -139,44 +142,74 @@ public class login extends AppCompatActivity {
             String name = user.getDisplayName();
             String email = user.getEmail();
             String id = account.getId();
-            String phonenumber = user.getPhoneNumber();
             String uid = user.getUid();
-            
 
             HashMap<Object, String> userdetails = new HashMap<>();
             userdetails.put("name", name);
             userdetails.put("uid", uid);
             userdetails.put("email", email);
             userdetails.put("account_id", id);
-            userdetails.put("userbanned", "false");
-            userdetails.put("phonenumber", phonenumber);
-            userdetails.put("last_login", dtf.format(now));
+            userdetails.put("invite_code","");
+            userdetails.put("user_banned", "false");
+            userdetails.put("usn", "");
+            userdetails.put("user_updated", "0");
+            userdetails.put("display_name", account.getDisplayName());
+            userdetails.put("user_created_on", dtf.format(now));
 
             DatabaseReference users = FirebaseDatabase.getInstance().getReference("Users");
-            users.child(uid).setValue(userdetails)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull @NotNull Task<Void> task) {
 
-                            Intent i = new Intent(login.this, MainActivity.class);
-                            startActivity(i);
-
-                            gsignin.setVisibility(View.VISIBLE);
-                            progressBar.setVisibility(View.GONE);
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
+            users.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onFailure(@NonNull @NotNull Exception e) {
-                    View parentLayout = findViewById(android.R.id.content);
-                    Snackbar.make(parentLayout, "Login Failed. Please try later.", Snackbar.LENGTH_LONG).show();
+                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                    if (snapshot.exists())
+                    {
+                        Intent i = new Intent(login.this, MainActivity.class);
+                        startActivity(i);
+                        progressBar.setVisibility(View.GONE);
+                    }
+                    else
+                    {
+                        users.child(uid).setValue(userdetails)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+
+                                        Intent i = new Intent(login.this, MainActivity.class);
+                                        startActivity(i);
+
+                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull @NotNull Exception e) {
+                                gsignin.setVisibility(View.VISIBLE);
+                                progressBar.setVisibility(View.GONE);
+
+                                View parentLayout = findViewById(android.R.id.content);
+                                Snackbar.make(parentLayout, "Login Failed. Please try later.", Snackbar.LENGTH_LONG).show();
+                            }
+                        }).addOnCanceledListener(new OnCanceledListener() {
+                            @Override
+                            public void onCanceled() {
+                                gsignin.setVisibility(View.VISIBLE);
+                                progressBar.setVisibility(View.GONE);
+
+                                View parentLayout = findViewById(android.R.id.content);
+                                Snackbar.make(parentLayout, "Cancelled by user.", Snackbar.LENGTH_LONG).show();
+                            }
+                        });
+                    }
                 }
-            }).addOnCanceledListener(new OnCanceledListener() {
+
                 @Override
-                public void onCanceled() {
-                    View parentLayout = findViewById(android.R.id.content);
-                    Snackbar.make(parentLayout, "Cancelled by user.", Snackbar.LENGTH_LONG).show();
+                public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
                 }
             });
+
+
+
+
 
 
 

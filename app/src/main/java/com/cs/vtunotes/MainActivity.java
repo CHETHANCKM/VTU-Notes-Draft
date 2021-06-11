@@ -17,6 +17,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -36,18 +37,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         loadfragment(new Dashboard());
 
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-
-        if (account==null){
+        if (user==null){
             Intent i = new Intent(MainActivity.this, terms_and_conditions.class);
             startActivity(i);
         }
         else  {
             View parentLayout = findViewById(android.R.id.content);
-            Snackbar snackbar =  Snackbar.make(parentLayout, "Signed in as "+account.getGivenName().toLowerCase()+".", Snackbar.LENGTH_SHORT);
-
+            Snackbar snackbar =  Snackbar.make(parentLayout, "Signed in as "+user.getDisplayName().toLowerCase()+".", Snackbar.LENGTH_SHORT);
             snackbar.setAnchorView(bottombar).show();
 
         }
