@@ -118,7 +118,7 @@ public class subjects1 extends AppCompatActivity {
         url_text.setText("Loading...");
         final String[] url = {null};
         DatabaseReference databaseReference = FirebaseDatabase.getInstance()
-                .getReference("Scheme").child(branch).child(db_code).child(m_scheme_year);
+                .getReference("Scheme").child(db_code).child(m_scheme_year);
         databaseReference.keepSynced(true);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
