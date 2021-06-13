@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cs.vtunotes.R;
@@ -32,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class phychemschemepage extends AppCompatActivity {
+public class subjects1 extends AppCompatActivity {
     RecyclerView recyclerView;
     private DatabaseReference mDatabase;
     Button add_subject_button, update_url_button;
@@ -41,25 +42,33 @@ public class phychemschemepage extends AppCompatActivity {
     subjectAdapter subjectAdapter;
     ShimmerFrameLayout shimmerlayout;
     ArrayList<subjectnameModels> list;
-    String m_scheme_year;
+    String m_scheme_year, db_code,branch;
+    TextView subject_name;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phychemschemepage);
+        setContentView(R.layout.activity_subjects1);
         shimmerlayout = findViewById(R.id.shimmerlayout);
 
         Intent intent = getIntent();
+        branch = intent.getStringExtra("branch");
         m_scheme_year = intent.getStringExtra("scheme_year");
+        db_code = intent.getStringExtra("db_code");
+
+        subject_name = findViewById(R.id.subject_name);
+        subject_name.setText(branch);
+
 
 
         mDatabase = FirebaseDatabase.getInstance()
                 .getReference("Notes")
                 .child("subjects")
+                .child(branch)
                 .child(m_scheme_year)
-                .child("physics_chemi");
+                .child(db_code);
 
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -109,7 +118,7 @@ public class phychemschemepage extends AppCompatActivity {
         url_text.setText("Loading...");
         final String[] url = {null};
         DatabaseReference databaseReference = FirebaseDatabase.getInstance()
-                .getReference("Scheme").child("physics_chemi").child(m_scheme_year);
+                .getReference("Scheme").child(branch).child(db_code).child(m_scheme_year);
         databaseReference.keepSynced(true);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -133,18 +142,18 @@ public class phychemschemepage extends AppCompatActivity {
                 }
                 else if(url[0].equals(new_url))
                 {
-                    Toast.makeText(phychemschemepage.this, "Field contains same url", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(subjects1.this, "Field contains same url", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
                     FirebaseDatabase.getInstance()
                             .getReference("Scheme")
-                            .child("physics_chemi")
+                            .child(db_code)
                             .child(m_scheme_year)
                             .setValue(new_url).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull @NotNull Task<Void> task) {
-                            Toast.makeText(phychemschemepage.this, "Scheme url was updated successfully.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(subjects1.this, "Scheme url was updated successfully.", Toast.LENGTH_SHORT).show();
                             url_text.clearFocus();
                             bottomSheetDialog.dismiss();
 
@@ -176,7 +185,7 @@ public class phychemschemepage extends AppCompatActivity {
 
                         if (subjectname.isEmpty() || subjectcode.isEmpty())
                         {
-                            Toast.makeText(phychemschemepage.this, "All feilds required", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(subjects1.this, "All feilds required", Toast.LENGTH_SHORT).show();
                         }
                         else
                         {
@@ -187,15 +196,15 @@ public class phychemschemepage extends AppCompatActivity {
 
                             DatabaseReference refs = FirebaseDatabase.getInstance()
                                     .getReference("Notes");
-                            refs.child("subjects")
+                            refs.child("subjects").child(branch)
                                     .child(m_scheme_year)
-                                    .child("physics_chemi")
+                                    .child(db_code)
                                     .child(subjectcode)
                                     .setValue(data)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull @NotNull Task<Void> task) {
-                                            Toast.makeText(phychemschemepage.this, "New subject was added successfully.", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(subjects1.this, "New subject was added successfully.", Toast.LENGTH_SHORT).show();
                                             bottomSheetDialog.dismiss();
                                         }
                                     });
@@ -209,16 +218,16 @@ public class phychemschemepage extends AppCompatActivity {
 
     public void show_scheme(View view) {
         final String[] url = {null};
-        Toast.makeText(phychemschemepage.this, "Please wait...", Toast.LENGTH_LONG).show();
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Scheme")
-                .child("physics_chemi").child(m_scheme_year);
+        Toast.makeText(subjects1.this, "Please wait...", Toast.LENGTH_LONG).show();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Scheme").child(branch)
+                .child(db_code).child(m_scheme_year);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 url[0] = snapshot.getValue(String.class);
                 if (url[0]==null)
                 {
-                    Toast.makeText(phychemschemepage.this, "Loading... Try again", Toast.LENGTH_LONG).show();
+                    Toast.makeText(subjects1.this, "Loading... Try again", Toast.LENGTH_LONG).show();
                 }
                 else
                 {

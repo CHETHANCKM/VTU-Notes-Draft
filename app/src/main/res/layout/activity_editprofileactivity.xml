@@ -136,7 +136,6 @@
                         android:hint="Edit name"
                         android:layout_marginBottom="10dp"
                         android:textColorHint="@color/grey"
-                        app:boxStrokeColor="@color/grey"
                         app:boxStrokeWidth="1dp"
                         app:counterMaxLength="10"
                         app:hintTextColor="@color/grey">
@@ -164,7 +163,6 @@
                         android:layout_marginBottom="10dp"
                         android:hint="USN"
                         android:textColorHint="@color/grey"
-                        app:boxStrokeColor="@color/grey"
                         app:boxStrokeWidth="1dp"
                         app:counterMaxLength="10"
                         app:hintTextColor="@color/grey">
@@ -173,32 +171,37 @@
                             android:id="@+id/usn_new"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+
                             android:clickable="true"
+                            android:inputType="textNoSuggestions"
                             android:textAllCaps="true"
-                            android:cursorVisible="true"
                             android:textColor="@color/black"
-                            android:textCursorDrawable="@drawable/cursor" />
+                            android:cursorVisible="true"
+                            android:textCursorDrawable="@drawable/cursor"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
 
                     <com.google.android.material.textfield.TextInputLayout
-
+                        android:id="@+id/customBranchLayout"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Branch"
                         android:textColorHint="@color/grey"
-                        app:boxStrokeColor="@color/grey"
                         app:hintTextColor="@color/black">
 
 
                         <AutoCompleteTextView
-
+                            android:id="@+id/customBranchView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/black"
-                            android:textCursorDrawable="@drawable/cursor" />
+                            android:inputType="textNoSuggestions"
+                            android:drawableTint="@color/black"
+                            android:textColorHint="@color/grey"
+                            android:cursorVisible="true"
+                            android:textCursorDrawable="@drawable/cursor"
+                            android:textColor="@color/black" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -210,7 +213,6 @@
                         android:hint="College name"
                         android:layout_marginTop="10dp"
                         android:textColorHint="@color/grey"
-                        app:boxStrokeColor="@color/grey"
                         app:hintTextColor="@color/black">
 
 
@@ -221,7 +223,9 @@
                             android:inputType="textNoSuggestions"
                             android:drawableTint="@color/black"
                             android:textColorHint="@color/grey"
-                            android:textCursorDrawable="@drawable/cursor" />
+                            android:cursorVisible="true"
+                            android:textCursorDrawable="@drawable/cursor"
+                            android:textColor="@color/black" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 

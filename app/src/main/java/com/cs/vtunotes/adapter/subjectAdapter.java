@@ -1,5 +1,6 @@
 package com.cs.vtunotes.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -44,6 +45,11 @@ public class subjectAdapter extends RecyclerView.Adapter<subjectAdapter.MyViewHo
         holder.setIsRecyclable(false);
         subjectnameModels subjectnameModels = list.get(position);
 
+
+        Intent intent = ((Activity) context).getIntent();
+        String branch = intent.getStringExtra("branch");
+
+
         String subjectcode = subjectnameModels.getSubject_code().toString();
         String subjectname = subjectnameModels.getSubject_name().toString();
         String scheme_code = subjectnameModels.getScheme().toString();
@@ -58,6 +64,7 @@ public class subjectAdapter extends RecyclerView.Adapter<subjectAdapter.MyViewHo
                 i.putExtra("subject_code", subjectcode);
                 i.putExtra("subject_name", subjectname);
                 i.putExtra("scheme", scheme_code);
+                i.putExtra("branch", branch);
                 v.getContext().startActivity(i);
             }
         });

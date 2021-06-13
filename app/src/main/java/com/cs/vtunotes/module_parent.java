@@ -31,6 +31,7 @@ public class module_parent extends AppCompatActivity {
         String new_subject_code = intent.getStringExtra("subject_code");
         String new_subject_name = intent.getStringExtra("subject_name");
         String new_scheme = intent.getStringExtra("scheme");
+        String branch = intent.getStringExtra("branch");
 
         head_text.setText(new_subject_code+" - "+new_subject_name.toLowerCase());
 
@@ -41,6 +42,7 @@ public class module_parent extends AppCompatActivity {
                 i.putExtra("subject_code", new_subject_code);
                 i.putExtra("subject_name", new_subject_name);
                 i.putExtra("scheme_code", new_scheme);
+                i.putExtra("branch", branch);
                 startActivity(i);
             }
         });
@@ -52,6 +54,7 @@ public class module_parent extends AppCompatActivity {
                 i.putExtra("subject_code", new_subject_code);
                 i.putExtra("subject_name", new_subject_name);
                 i.putExtra("scheme_code", new_scheme);
+                i.putExtra("branch", branch);
                 startActivity(i);
             }
         });
@@ -63,6 +66,7 @@ public class module_parent extends AppCompatActivity {
                 i.putExtra("subject_code", new_subject_code);
                 i.putExtra("subject_name", new_subject_name);
                 i.putExtra("scheme_code", new_scheme);
+                i.putExtra("branch", branch);
                 startActivity(i);
             }
         });
@@ -74,6 +78,7 @@ public class module_parent extends AppCompatActivity {
                 i.putExtra("subject_code", new_subject_code);
                 i.putExtra("subject_name", new_subject_name);
                 i.putExtra("scheme_code", new_scheme);
+                i.putExtra("branch", branch);
                 startActivity(i);
             }
         });
@@ -85,6 +90,7 @@ public class module_parent extends AppCompatActivity {
                 i.putExtra("subject_code", new_subject_code);
                 i.putExtra("subject_name", new_subject_name);
                 i.putExtra("scheme_code", new_scheme);
+                i.putExtra("branch", branch);
                 startActivity(i);
             }
         });

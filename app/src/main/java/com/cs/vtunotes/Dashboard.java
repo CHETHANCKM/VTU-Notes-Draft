@@ -14,15 +14,10 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
+import com.cs.vtunotes.physics_chemistry.scheme;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Date;
@@ -32,7 +27,7 @@ public class Dashboard extends Fragment {
     TextView hello_msg;
 //    private AdView mAdView1, mAdView2, mAdView3;
     FirebaseAuth mAuth;
-    FrameLayout complete_profile,branches_more,more_questionpapers,physicsandchemi;
+    FrameLayout complete_profile,branches_more,more_questionpapers,physicsandchemi,mathematics;
     CardView webiste;
 
     public Dashboard() {
@@ -51,6 +46,7 @@ public class Dashboard extends Fragment {
 //        branches_more = v.findViewById(R.id.branches_more);
 //        more_questionpapers = v.findViewById(R.id.more_questionpapers);
         physicsandchemi = v.findViewById(R.id.physicsandchemi);
+        mathematics  = v.findViewById(R.id.mathematics);
 
         mAuth = FirebaseAuth.getInstance();
         getTimeFromAndroid();
@@ -85,10 +81,23 @@ public class Dashboard extends Fragment {
         physicsandchemi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(), com.cs.vtunotes.physics_chemistry.physicsandchemi.class);
+                Intent i = new Intent(getContext(), scheme.class);
+                i.putExtra("branch","Physics & Chemistry");
+                i.putExtra("db_code", "physics_chemi");
                 startActivity(i);
             }
         });
+
+        mathematics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), scheme.class);
+                i.putExtra("branch","Mathematics");
+                i.putExtra("db_code", "maths");
+                startActivity(i);
+            }
+        });
+
 
 //        branches_more.setOnClickListener(new View.OnClickListener() {
 //            @Override

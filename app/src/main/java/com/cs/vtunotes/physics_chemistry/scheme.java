@@ -5,25 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.cs.vtunotes.R;
 import com.cs.vtunotes.adapter.schemeadapter;
-import com.cs.vtunotes.adapter.subjectAdapter;
-import com.cs.vtunotes.login;
 import com.cs.vtunotes.models.SchemeModel;
-import com.cs.vtunotes.models.subjectnameModels;
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,20 +23,26 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Map;
 
-public class physicsandchemi extends AppCompatActivity {
+public class scheme extends AppCompatActivity {
     RecyclerView recyclerView;
     private DatabaseReference mDatabase;
     schemeadapter schemeadapter;
     ShimmerFrameLayout shimmerlayout;
+    TextView subject_name;
     ArrayList<SchemeModel> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_physicsandchemi);
+        setContentView(R.layout.scheme);
         recyclerView = findViewById(R.id.recyclerview_scheme);
         shimmerlayout = findViewById(R.id.shimmerlayout);
+        subject_name = findViewById(R.id.subject_name);
+
+        Intent intent = getIntent();
+        String branch = intent.getStringExtra("branch");
+
+        subject_name.setText(branch+" - Scheme");
 
         mDatabase = FirebaseDatabase.getInstance()
                 .getReference().child("scheme");

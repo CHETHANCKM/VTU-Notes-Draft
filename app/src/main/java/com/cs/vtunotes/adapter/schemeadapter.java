@@ -1,5 +1,6 @@
 package com.cs.vtunotes.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cs.vtunotes.R;
 import com.cs.vtunotes.models.SchemeModel;
-import com.cs.vtunotes.physics_chemistry.phychemschemepage;
+import com.cs.vtunotes.physics_chemistry.subjects1;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -42,6 +43,11 @@ public class schemeadapter extends RecyclerView.Adapter<schemeadapter.MyViewHold
         holder.setIsRecyclable(false);
         SchemeModel schemeModel = list.get(position);
 
+        Intent intent = ((Activity) context).getIntent();
+        String branch = intent.getStringExtra("branch");
+        String db_code = intent.getStringExtra("db_code");
+
+
         String schemecode = schemeModel.getScheme_year();
         holder.schemecode.setText("SCHEME - "+schemecode);
 
@@ -49,8 +55,11 @@ public class schemeadapter extends RecyclerView.Adapter<schemeadapter.MyViewHold
         holder.chip_list_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(v.getContext(), phychemschemepage.class);
+                Intent i = new Intent(v.getContext(), subjects1.class);
+                i.putExtra("branch", branch);
                 i.putExtra("scheme_year", schemecode);
+                i.putExtra("db_code", db_code);
+                i.putExtra("subject_main", branch);
                 v.getContext().startActivity(i);
             }
         });

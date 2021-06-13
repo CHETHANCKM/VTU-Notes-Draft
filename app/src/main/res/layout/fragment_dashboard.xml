@@ -166,7 +166,7 @@
                                             <ImageView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="50dp"
-                                                app:srcCompat="@drawable/ic_civil_logo" />
+                                                app:srcCompat="@drawable/ic_phy_chem" />
 
                                             <TextView
                                                 android:layout_width="match_parent"
@@ -193,7 +193,7 @@
                                             <ImageView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="50dp"
-                                                app:srcCompat="@drawable/ic_civil_logo" />
+                                                app:srcCompat="@drawable/ic_civil" />
 
                                             <TextView
                                                 android:layout_width="match_parent"
@@ -220,7 +220,7 @@
                                             <ImageView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="50dp"
-                                                app:srcCompat="@drawable/ic_civil_logo" />
+                                                app:srcCompat="@drawable/ic_cse" />
 
                                             <TextView
                                                 android:layout_width="match_parent"
@@ -247,7 +247,7 @@
                                             <ImageView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="50dp"
-                                                app:srcCompat="@drawable/ic_civil_logo" />
+                                                app:srcCompat="@drawable/ic_eee" />
 
                                             <TextView
                                                 android:layout_width="match_parent"
@@ -290,7 +290,7 @@
                                             <ImageView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="50dp"
-                                                app:srcCompat="@drawable/ic_civil_logo" />
+                                                app:srcCompat="@drawable/ic_ece" />
 
                                             <TextView
                                                 android:layout_width="match_parent"
@@ -317,7 +317,7 @@
                                             <ImageView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="50dp"
-                                                app:srcCompat="@drawable/ic_civil_logo" />
+                                                app:srcCompat="@drawable/ic_cse" />
 
                                             <TextView
                                                 android:layout_width="match_parent"
@@ -331,6 +331,7 @@
                                     </FrameLayout>
 
                                     <FrameLayout
+                                        android:id="@+id/mathematics"
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
                                         android:layout_weight="1">
@@ -344,7 +345,7 @@
                                             <ImageView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="50dp"
-                                                app:srcCompat="@drawable/ic_civil_logo" />
+                                                app:srcCompat="@drawable/ic_math" />
 
                                             <TextView
                                                 android:layout_width="match_parent"
@@ -371,7 +372,7 @@
                                             <ImageView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="50dp"
-                                                app:srcCompat="@drawable/ic_civil_logo" />
+                                                app:srcCompat="@drawable/ic_mech" />
 
                                             <TextView
                                                 android:layout_width="match_parent"
@@ -524,7 +525,7 @@
                                             <ImageView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="50dp"
-                                                app:srcCompat="@drawable/ic_civil_logo" />
+                                                app:srcCompat="@drawable/ic_phy_chem" />
 
                                             <TextView
                                                 android:layout_width="match_parent"
@@ -551,7 +552,7 @@
                                             <ImageView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="50dp"
-                                                app:srcCompat="@drawable/ic_civil_logo" />
+                                                app:srcCompat="@drawable/ic_civil" />
 
                                             <TextView
                                                 android:layout_width="match_parent"
@@ -578,7 +579,7 @@
                                             <ImageView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="50dp"
-                                                app:srcCompat="@drawable/ic_civil_logo" />
+                                                app:srcCompat="@drawable/ic_cse" />
 
                                             <TextView
                                                 android:layout_width="match_parent"
@@ -605,7 +606,7 @@
                                             <ImageView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="50dp"
-                                                app:srcCompat="@drawable/ic_civil_logo" />
+                                                app:srcCompat="@drawable/ic_eee" />
 
                                             <TextView
                                                 android:layout_width="match_parent"
@@ -648,7 +649,7 @@
                                             <ImageView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="50dp"
-                                                app:srcCompat="@drawable/ic_civil_logo" />
+                                                app:srcCompat="@drawable/ic_ece" />
 
                                             <TextView
                                                 android:layout_width="match_parent"
@@ -675,7 +676,7 @@
                                             <ImageView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="50dp"
-                                                app:srcCompat="@drawable/ic_civil_logo" />
+                                                app:srcCompat="@drawable/ic_cse" />
 
                                             <TextView
                                                 android:layout_width="match_parent"
@@ -702,13 +703,13 @@
                                             <ImageView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="50dp"
-                                                app:srcCompat="@drawable/ic_civil_logo" />
+                                                app:srcCompat="@drawable/ic_math" />
 
                                             <TextView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:fontFamily="@font/kanit"
-                                                android:text="Mechanical Engineering"
+                                                android:text="Engineering Mathematics"
                                                 android:textAlignment="center"
                                                 android:textColor="@color/black"
                                                 android:textSize="12dp" />

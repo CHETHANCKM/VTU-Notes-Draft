@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context=".physics_chemistry.phychemschemepage">
+    tools:context=".physics_chemistry.subjects1">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/materialToolbar6"
@@ -19,11 +19,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/subject_name"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:fontFamily="@font/kanit"
             android:paddingLeft="10dp"
-            android:text="physics - chemistry"
             android:textColor="@color/primary_theme"
             android:textSize="20dp"
             tools:layout_editor_absoluteX="16dp"
