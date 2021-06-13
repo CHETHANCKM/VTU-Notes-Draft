@@ -9,9 +9,9 @@
     <string name="invite_text">
         Invite your friend to download the VTU Notes app. After they enter the code on the app, you both get 100 points.
     </string>
-    <string name="invited">Invited by friend? <br/>Enter the invite code and get rewarded
+    <string name="invited">Invited by friend? <br />Enter the invite code and get rewarded
     </string>
     <string name="updateurlinfo">before you go,  </string>
-    <string name="string_pdf">Make sure you are uploading the correct <u>PDF</u> file. <br/>Max size: 50MB.</string>
+    <string name="string_pdf">Make sure you are uploading the correct <u>PDF</u> file. <br />Max size: 50MB.</string>
 
 </resources>

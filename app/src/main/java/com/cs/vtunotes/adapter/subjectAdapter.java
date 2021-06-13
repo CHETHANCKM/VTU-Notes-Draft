@@ -48,6 +48,9 @@ public class subjectAdapter extends RecyclerView.Adapter<subjectAdapter.MyViewHo
 
         Intent intent = ((Activity) context).getIntent();
         String branch = intent.getStringExtra("branch");
+        String db_code = intent.getStringExtra("db_code");
+        String semester_name = intent.getStringExtra("semester_name");
+
 
 
         String subjectcode = subjectnameModels.getSubject_code().toString();
@@ -61,10 +64,14 @@ public class subjectAdapter extends RecyclerView.Adapter<subjectAdapter.MyViewHo
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(v.getContext(), module_parent.class);
+                i.putExtra("branch", branch);
+
                 i.putExtra("subject_code", subjectcode);
                 i.putExtra("subject_name", subjectname);
+
                 i.putExtra("scheme", scheme_code);
-                i.putExtra("branch", branch);
+                i.putExtra("semester_name",semester_name);
+
                 v.getContext().startActivity(i);
             }
         });

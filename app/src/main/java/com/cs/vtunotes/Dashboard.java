@@ -27,7 +27,7 @@ public class Dashboard extends Fragment {
     TextView hello_msg;
 //    private AdView mAdView1, mAdView2, mAdView3;
     FirebaseAuth mAuth;
-    FrameLayout complete_profile,branches_more,more_questionpapers,physicsandchemi,mathematics;
+    FrameLayout complete_profile,branches_more,more_questionpapers,physicsandchemi,mathematics,civil, cse,eee, ece, ise, mech;
     CardView webiste;
 
     public Dashboard() {
@@ -47,6 +47,13 @@ public class Dashboard extends Fragment {
 //        more_questionpapers = v.findViewById(R.id.more_questionpapers);
         physicsandchemi = v.findViewById(R.id.physicsandchemi);
         mathematics  = v.findViewById(R.id.mathematics);
+
+        civil = v.findViewById(R.id.civil);
+        cse = v.findViewById(R.id.cse);
+        eee = v.findViewById(R.id.eee);
+        ece = v.findViewById(R.id.ece);
+        ise = v.findViewById(R.id.ise);
+        mech = v.findViewById(R.id.mech);
 
         mAuth = FirebaseAuth.getInstance();
         getTimeFromAndroid();
@@ -78,15 +85,6 @@ public class Dashboard extends Fragment {
             }
         });
 
-        physicsandchemi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getContext(), scheme.class);
-                i.putExtra("branch","Physics & Chemistry");
-                i.putExtra("db_code", "physics_chemi");
-                startActivity(i);
-            }
-        });
 
         mathematics.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +92,72 @@ public class Dashboard extends Fragment {
                 Intent i = new Intent(getContext(), scheme.class);
                 i.putExtra("branch","Mathematics");
                 i.putExtra("db_code", "maths");
+                startActivity(i);
+            }
+        });
+
+        physicsandchemi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), scheme.class);
+                i.putExtra("branch","Physics and Chemistry");
+                i.putExtra("db_code", "physics_chemi");
+                startActivity(i);
+            }
+        });
+        civil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), scheme.class);
+                i.putExtra("branch","Civil Engineering");
+                i.putExtra("db_code", "civil");
+                startActivity(i);
+            }
+        });
+        cse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), scheme.class);
+                i.putExtra("branch","Computer Science");
+                i.putExtra("db_code", "cse");
+                startActivity(i);
+            }
+        });
+        eee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), scheme.class);
+                i.putExtra("branch","Elec and Electronics");
+                i.putExtra("db_code", "eee");
+                startActivity(i);
+            }
+        });
+        ece.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), scheme.class);
+                i.putExtra("branch","Elec and Communication");
+                i.putExtra("db_code", "ece");
+                startActivity(i);
+            }
+        });
+
+        ise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), scheme.class);
+                i.putExtra("branch","Information Science");
+                i.putExtra("db_code", "ise");
+                startActivity(i);
+            }
+        });
+
+        mech.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), scheme.class);
+                i.putExtra("branch","Mechanical Engineering");
+                i.putExtra("db_code", "mech");
                 startActivity(i);
             }
         });

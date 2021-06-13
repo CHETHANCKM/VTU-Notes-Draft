@@ -19,7 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VTUNotes">
-        <activity android:name=".modules.module_five"></activity>
+        <activity android:name=".physics_chemistry.semesters"></activity>
+        <activity android:name=".modules.module_five" />
         <activity android:name=".modules.module_four" />
         <activity android:name=".modules.module_three" />
         <activity android:name=".modules.post_notes.post_new_title" />
@@ -51,8 +52,7 @@
         <activity
             android:name=".login"
             android:noHistory="true" />
-        <activity
-            android:name=".terms_and_conditions"/>
+        <activity android:name=".terms_and_conditions" />
         <activity android:name=".MainActivity" />
 
         <meta-data

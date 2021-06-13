@@ -27,7 +27,7 @@ public class module_two extends AppCompatActivity {
         String m_subject_name = intent.getStringExtra("subject_name");
         String m_scheme = intent.getStringExtra("scheme_code");
         String branch = intent.getStringExtra("branch");
-
+        String semester_name = intent.getStringExtra("semester_name");
         head_text.setText(m_subject_name+" - Module 2");
 
 
@@ -41,6 +41,7 @@ public class module_two extends AppCompatActivity {
                 i.putExtra("subject_name", m_subject_name);
                 i.putExtra("module", "Module 2");
                 i.putExtra("branch", branch);
+                i.putExtra("semester_name", semester_name);
                 startActivity(i);
             }
         });

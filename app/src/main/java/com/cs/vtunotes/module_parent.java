@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cs.vtunotes.modules.*;
 
@@ -32,6 +33,8 @@ public class module_parent extends AppCompatActivity {
         String new_subject_name = intent.getStringExtra("subject_name");
         String new_scheme = intent.getStringExtra("scheme");
         String branch = intent.getStringExtra("branch");
+        String semester_name = intent.getStringExtra("semester_name");
+
 
         head_text.setText(new_subject_code+" - "+new_subject_name.toLowerCase());
 
@@ -43,6 +46,7 @@ public class module_parent extends AppCompatActivity {
                 i.putExtra("subject_name", new_subject_name);
                 i.putExtra("scheme_code", new_scheme);
                 i.putExtra("branch", branch);
+                i.putExtra("semester_name", semester_name);
                 startActivity(i);
             }
         });
@@ -55,6 +59,7 @@ public class module_parent extends AppCompatActivity {
                 i.putExtra("subject_name", new_subject_name);
                 i.putExtra("scheme_code", new_scheme);
                 i.putExtra("branch", branch);
+                i.putExtra("semester_name", semester_name);
                 startActivity(i);
             }
         });
@@ -67,6 +72,7 @@ public class module_parent extends AppCompatActivity {
                 i.putExtra("subject_name", new_subject_name);
                 i.putExtra("scheme_code", new_scheme);
                 i.putExtra("branch", branch);
+                i.putExtra("semester_name", semester_name);
                 startActivity(i);
             }
         });
@@ -79,6 +85,7 @@ public class module_parent extends AppCompatActivity {
                 i.putExtra("subject_name", new_subject_name);
                 i.putExtra("scheme_code", new_scheme);
                 i.putExtra("branch", branch);
+                i.putExtra("semester_name", semester_name);
                 startActivity(i);
             }
         });
@@ -91,6 +98,7 @@ public class module_parent extends AppCompatActivity {
                 i.putExtra("subject_name", new_subject_name);
                 i.putExtra("scheme_code", new_scheme);
                 i.putExtra("branch", branch);
+                i.putExtra("semester_name", semester_name);
                 startActivity(i);
             }
         });

@@ -8,12 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cs.vtunotes.R;
-import com.cs.vtunotes.models.SchemeModel;
+import com.cs.vtunotes.models.semesterModel;
 import com.cs.vtunotes.physics_chemistry.semesters;
 import com.cs.vtunotes.physics_chemistry.subjects1;
 
@@ -21,12 +22,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class schemeadapter extends RecyclerView.Adapter<schemeadapter.MyViewHolder> {
+public class semesterAdapter extends RecyclerView.Adapter<semesterAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<SchemeModel> list;
+    ArrayList<semesterModel> list;
 
-    public schemeadapter(Context context, ArrayList<SchemeModel> list) {
+
+    public semesterAdapter(Context context, ArrayList<semesterModel> list) {
         this.context = context;
         this.list = list;
     }
@@ -35,31 +37,33 @@ public class schemeadapter extends RecyclerView.Adapter<schemeadapter.MyViewHold
     @NotNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.list_card_chip, parent, false);
+         View v = LayoutInflater.from(context).inflate(R.layout.list_card_chip, parent, false);
         return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull MyViewHolder holder, int position) {
         holder.setIsRecyclable(false);
-        SchemeModel schemeModel = list.get(position);
+        semesterModel semesterModel = list.get(position);
+
+         String semester_name = semesterModel.getSem();
+         holder.schemecode.setText(semester_name);
+
 
         Intent intent = ((Activity) context).getIntent();
         String branch = intent.getStringExtra("branch");
         String db_code = intent.getStringExtra("db_code");
-
-
-        String scheme_code = schemeModel.getScheme_year();
-        holder.schemecode.setText("SCHEME - "+scheme_code);
+        String scheme_code = intent.getStringExtra("scheme_code");
 
 
         holder.chip_list_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(v.getContext(), semesters.class);
+                Intent i = new Intent(v.getContext(), subjects1.class);
                 i.putExtra("branch", branch);
                 i.putExtra("db_code", db_code);
                 i.putExtra("scheme_code", scheme_code);
+                i.putExtra("semester_name", semester_name);
                 v.getContext().startActivity(i);
             }
         });
@@ -68,17 +72,17 @@ public class schemeadapter extends RecyclerView.Adapter<schemeadapter.MyViewHold
 
     @Override
     public int getItemCount() {
-        return list.size() ;
+        return list.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends  RecyclerView.ViewHolder {
         TextView schemecode;
         FrameLayout chip_list_card;
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             schemecode = itemView.findViewById(R.id.card_subjectname);
             chip_list_card = itemView.findViewById(R.id.chip_list_card);
+
         }
     }
-
 }

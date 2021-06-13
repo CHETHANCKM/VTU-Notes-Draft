@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cs.vtunotes.R;
 import com.cs.vtunotes.editprofileactivity;
@@ -29,6 +30,7 @@ public class module_one extends AppCompatActivity {
         String m_subject_name = intent.getStringExtra("subject_name");
         String m_scheme = intent.getStringExtra("scheme_code");
         String branch = intent.getStringExtra("branch");
+        String semester_name = intent.getStringExtra("semester_name");
         head_text.setText(m_subject_name+" - Module 1");
 
 
@@ -41,6 +43,7 @@ public class module_one extends AppCompatActivity {
                 i.putExtra("subject_name", m_subject_name);
                 i.putExtra("module", "Module 1");
                 i.putExtra("branch", branch);
+                i.putExtra("semester_name", semester_name);
                 startActivity(i);
             }
         });

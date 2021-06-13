@@ -107,7 +107,9 @@ public class post_new_title extends AppCompatActivity {
         String m_module = intent.getStringExtra("module");
         String m_scheme = intent.getStringExtra("scheme");
         String branch = intent.getStringExtra("branch");
+        String semester_name = intent.getStringExtra("semester_name");
 
+        Toast.makeText(this, ""+semester_name, Toast.LENGTH_SHORT).show();
 
         path.setText(m_scheme+" -> "+m_subject_name+" -> "+m_module);
 
@@ -136,7 +138,7 @@ public class post_new_title extends AppCompatActivity {
                 }
                 else
                 {
-                    upload_data(title, m_scheme, m_subject_name, m_subject_code, m_module, branch);
+                    upload_data(title, m_scheme, m_subject_name, m_subject_code, m_module, branch, semester_name);
                     ai_text.setEnabled(false);
                     ai_camera.setEnabled(false);
                     choosefile.setEnabled(false);
@@ -173,9 +175,9 @@ public class post_new_title extends AppCompatActivity {
 
 
     private void upload_data(String title, String m_scheme,
-                             String m_subject_name, String m_subject_code, String m_module, String branch) {
+                             String m_subject_name, String m_subject_code, String m_module, String branch, String semester_name) {
         final String timestamp = String.valueOf(System.currentTimeMillis());
-        String  filepathandname = "Notes/questions/"+m_scheme+"/"+branch+"/"+m_subject_name+"/"+m_subject_code+"/"+m_module;
+        String  filepathandname = "Notes/questions/"+m_scheme+"/"+branch+"/"+semester_name+"/"+m_subject_name+"/"+m_subject_code+"/"+m_module;
 
         if (file_uri!=null)
         {
@@ -204,6 +206,7 @@ public class post_new_title extends AppCompatActivity {
                                 .child("questions")
                                 .child(m_scheme)
                                 .child(branch)
+                                .child(semester_name)
                                 .child(m_subject_name)
                                 .child(m_subject_code)
                                 .child(m_module);

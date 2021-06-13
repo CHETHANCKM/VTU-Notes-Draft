@@ -36,13 +36,13 @@ import java.util.HashMap;
 public class subjects1 extends AppCompatActivity {
     RecyclerView recyclerView;
     private DatabaseReference mDatabase;
-    Button add_subject_button, update_url_button;
+    Button add_subject_button;
     TextInputEditText add_subject_code, add_subject_name;
-    EditText url_text;
+
     subjectAdapter subjectAdapter;
     ShimmerFrameLayout shimmerlayout;
     ArrayList<subjectnameModels> list;
-    String m_scheme_year, db_code,branch;
+    String m_scheme_year, db_code,branch, semester_name;
     TextView subject_name;
 
 
@@ -55,8 +55,9 @@ public class subjects1 extends AppCompatActivity {
 
         Intent intent = getIntent();
         branch = intent.getStringExtra("branch");
-        m_scheme_year = intent.getStringExtra("scheme_year");
+        m_scheme_year = intent.getStringExtra("scheme_code");
         db_code = intent.getStringExtra("db_code");
+        semester_name = intent.getStringExtra("semester_name");
 
         subject_name = findViewById(R.id.subject_name);
         subject_name.setText(branch);
@@ -107,65 +108,9 @@ public class subjects1 extends AppCompatActivity {
 
     }
 
-    public void updateurl(View view)
-    {
-        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        bottomSheetDialog.setContentView(R.layout.phychemupdateurl);
-        url_text = bottomSheetDialog.findViewById(R.id.url_text);
-        update_url_button = bottomSheetDialog.findViewById(R.id.update_url_button);
 
 
-        url_text.setText("Loading...");
-        final String[] url = {null};
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance()
-                .getReference("Scheme").child(db_code).child(m_scheme_year);
-        databaseReference.keepSynced(true);
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                url[0] = snapshot.getValue(String.class);
-                url_text.setText(url[0]);
-            }
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-            }
-        });
 
-        update_url_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String new_url = url_text.getText().toString();
-
-                if (new_url.isEmpty())
-                {
-
-                }
-                else if(url[0].equals(new_url))
-                {
-                    Toast.makeText(subjects1.this, "Field contains same url", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    FirebaseDatabase.getInstance()
-                            .getReference("Scheme")
-                            .child(db_code)
-                            .child(m_scheme_year)
-                            .setValue(new_url).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull @NotNull Task<Void> task) {
-                            Toast.makeText(subjects1.this, "Scheme url was updated successfully.", Toast.LENGTH_SHORT).show();
-                            url_text.clearFocus();
-                            bottomSheetDialog.dismiss();
-
-                        }
-                    });
-
-                }
-
-            }
-        });
-        bottomSheetDialog.show();
-    }
 
     public void addsubject(View view) {
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
@@ -216,35 +161,5 @@ public class subjects1 extends AppCompatActivity {
         bottomSheetDialog.show();
     }
 
-    public void show_scheme(View view) {
-        final String[] url = {null};
-        Toast.makeText(subjects1.this, "Please wait...", Toast.LENGTH_LONG).show();
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Scheme").child(branch)
-                .child(db_code).child(m_scheme_year);
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                url[0] = snapshot.getValue(String.class);
-                if (url[0]==null)
-                {
-                    Toast.makeText(subjects1.this, "Loading... Try again", Toast.LENGTH_LONG).show();
-                }
-                else
-                {
-                    Intent i = new Intent(getApplicationContext(), webactivity.class);
-                    i.putExtra("url", url[0]);
-                    startActivity(i);
-                }
 
-            }
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-            }
-        });
-
-
-
-
-
-    }
 }

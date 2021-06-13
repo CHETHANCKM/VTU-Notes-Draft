@@ -62,7 +62,6 @@ public class scheme extends AppCompatActivity {
                 list.clear();
                 for (DataSnapshot ds: snapshot.getChildren())
                 {
-
                     SchemeModel schemeModel = ds.getValue(SchemeModel.class);
                     list.add(schemeModel);
                 }
