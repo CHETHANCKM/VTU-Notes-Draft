@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -28,15 +29,22 @@
         <activity android:name=".modules.module_one" />
         <activity android:name=".module_parent" />
         <activity android:name=".webactivity" />
-        <activity android:name=".civil.civil2015page" />
-        <activity android:name=".civil.civil" />
         <activity android:name=".physics_chemistry.subjects1" />
         <activity android:name=".physics_chemistry.scheme" />
         <activity android:name=".blog_post" />
         <activity android:name=".reward" />
         <activity android:name=".resultpage" />
         <activity android:name=".reddemcode" />
-        <activity android:name=".inviteactivity" />
+        <activity android:name=".inviteactivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:host="vtunotes.page.link"
+                    android:scheme="https"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".editprofileactivity" />
         <activity
             android:name=".SplashActivity"
@@ -58,6 +66,12 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~3347511713" />
+
+
+
     </application>
+
+
+
 
 </manifest>

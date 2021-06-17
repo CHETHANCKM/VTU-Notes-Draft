@@ -3,6 +3,7 @@ package com.cs.vtunotes;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
@@ -14,11 +15,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Date;
 
 
 public class MyProfile extends Fragment {
 
-    TextView editprofile_button;
+    TextView editprofile_button,username_profile,email_profile;
     FrameLayout invitefriend;
     CardView rewardcard,signout;
     public MyProfile() {
@@ -34,6 +45,30 @@ public class MyProfile extends Fragment {
         invitefriend = v.findViewById(R.id.invitefriend);
         rewardcard = v.findViewById(R.id.rewardcard);
         signout = v.findViewById(R.id.signout);
+        username_profile = v.findViewById(R.id.username_profile);
+        email_profile = v.findViewById(R.id.email_profile);
+
+
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String email = user.getEmail().toString().toLowerCase();
+        email_profile.setText(email);
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance()
+                .getReference("Users").child(user.getUid());
+
+        databaseReference.child("display_name").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                final String[] user_name = {null};
+                user_name[0] = snapshot.getValue(String.class).toUpperCase();
+                username_profile.setText(user_name[0]);
+            }
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+            }
+        });
+
 
         signout.setOnClickListener(new View.OnClickListener() {
             @Override

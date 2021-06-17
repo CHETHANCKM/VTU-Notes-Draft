@@ -87,12 +87,11 @@
                         android:textSize="15dp" />
 
                     <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progressbar"
                         android:layout_width="match_parent"
                         android:layout_marginLeft="20dp"
-                        android:indeterminate="true"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="20dp"
-                        android:layout_marginBottom="5dp"
                         android:layout_height="wrap_content">
 
                     </com.google.android.material.progressindicator.LinearProgressIndicator>
@@ -107,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="15dp"
                 app:cardBackgroundColor="@color/bg"
                 app:cardElevation="15dp"
@@ -809,7 +808,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="35dp"
                 app:cardBackgroundColor="@color/orange"
                 app:cardElevation="15dp"
                 app:cardMaxElevation="15dp">
@@ -872,6 +871,7 @@
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>

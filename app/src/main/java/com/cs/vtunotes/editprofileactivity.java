@@ -77,7 +77,6 @@ public class editprofileactivity extends AppCompatActivity {
 
         DatabaseReference college_db = FirebaseDatabase.getInstance().getReference();
 
-        DatabaseReference branch_db = FirebaseDatabase.getInstance().getReference();
 
         college_db.child("branches").addValueEventListener(new ValueEventListener() {
             @Override
@@ -190,13 +189,13 @@ public class editprofileactivity extends AppCompatActivity {
                     customSpinnerLayout.setEnabled(false);
                     customBranchLayout.setEnabled(false);
                     usn_new.setEnabled(false);
-                    submit.setEnabled(false);
+                    submit.setVisibility(View.GONE);
                     edit_name_info.setText("ⓘ :- These details cannot be changed anymore");
                 }
                 else
                 {
                     edit_name.setEnabled(true);
-                    submit.setEnabled(true);
+                    submit.setVisibility(View.VISIBLE);
                     customSpinnerLayout.setEnabled(true);
                     customBranchLayout.setEnabled(true);
                     usn_new.setEnabled(true);

@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.inappmessaging.model.Button;
 
 public class SplashActivity extends AppCompatActivity {
     FirebaseAuth mauth = FirebaseAuth.getInstance();
@@ -30,6 +32,7 @@ public class SplashActivity extends AppCompatActivity {
                 }
                 else
                 {
+
                     Intent i = new Intent(SplashActivity.this, MainActivity.class);
                     startActivity(i);
                 }

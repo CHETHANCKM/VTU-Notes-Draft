@@ -39,8 +39,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -109,18 +113,28 @@ public class post_new_title extends AppCompatActivity {
         String branch = intent.getStringExtra("branch");
         String semester_name = intent.getStringExtra("semester_name");
 
-        Toast.makeText(this, ""+semester_name, Toast.LENGTH_SHORT).show();
 
-        path.setText(m_scheme+" -> "+m_subject_name+" -> "+m_module);
+        path.setText(m_scheme+" > "+m_subject_name+" > "+m_module);
 
         campermission = new String[] {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagepermission = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-        FirebaseAuth mauth = FirebaseAuth.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance()
+                .getReference("Users").child(user.getUid());
 
-        user_name = mauth.getCurrentUser().getDisplayName();
+        databaseReference.child("display_name").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                final String[] user_name = {null};
+                user_name[0] = snapshot.getValue(String.class).toUpperCase();
+                username_text.setText(user_name[0]);
+            }
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+            }
+        });
 
-        username_text.setText(user_name);
 
 
         uploadnotes.setOnClickListener(new View.OnClickListener() {
@@ -282,7 +296,7 @@ public class post_new_title extends AppCompatActivity {
                     }
                     else
                     {
-                        Toast.makeText(this, "Camera adnd storge permisson requiried", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Camera and Storage permission required.", Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -313,8 +327,6 @@ public class post_new_title extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Text visionText) {
                                         processTextBlock(visionText);
-
-
                                     }
                                 })
                                 .addOnFailureListener(
