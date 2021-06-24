@@ -7,31 +7,52 @@
     android:background="@color/white"
     tools:context=".modules.module_one">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/materialToolbar7"
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_height="?actionBarSize"
+
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-        <TextView
-            android:id="@+id/head_text"
-            android:layout_width="wrap_content"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/kanit"
-            android:paddingLeft="10dp"
-            android:text="subject_code - subject_name"
-            android:textColor="@color/primary_theme"
-            android:textSize="20dp"
-            tools:layout_editor_absoluteX="46dp"
-            tools:layout_editor_absoluteY="11dp"></TextView>
+            app:titleTextColor="@color/primary_theme">
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+<!--    <com.google.android.material.appbar.MaterialToolbar-->
+<!--        android:id="@+id/materialToolbar7"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:background="@color/white"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
 
 
-    </com.google.android.material.appbar.MaterialToolbar>
+<!--        <TextView-->
+<!--            android:id="@+id/head_text"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:fontFamily="@font/kanit"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:text="subject_code - subject_name"-->
+<!--            android:textColor="@color/primary_theme"-->
+<!--            android:textSize="20dp"-->
+<!--            tools:layout_editor_absoluteX="46dp"-->
+<!--            tools:layout_editor_absoluteY="11dp"></TextView>-->
+
+
+<!--    </com.google.android.material.appbar.MaterialToolbar>-->
 
     <ScrollView
         android:layout_width="0dp"
@@ -39,12 +60,26 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialToolbar7">
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical">
+
+            <include layout="@layout/pdf_list"></include>
+
+            <include layout="@layout/pdf_list"></include>
+            <include layout="@layout/pdf_list"></include>
+            <include layout="@layout/pdf_list"></include>
+            <include layout="@layout/pdf_list"></include>
+            <include layout="@layout/pdf_list"></include>
+            <include layout="@layout/pdf_list"></include>
+            <include layout="@layout/pdf_list"></include>
+            <include layout="@layout/pdf_list"></include>
+            <include layout="@layout/pdf_list"></include>
+
+        </LinearLayout>
 
 
     </ScrollView>
